@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  resources :order_details
+  resources :orders
+  resources :product_categories
+  resources :categories
+  resources :product_options
+  resources :options
+  resources :products
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
