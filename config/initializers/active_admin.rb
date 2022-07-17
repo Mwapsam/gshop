@@ -19,6 +19,8 @@ ActiveAdmin.setup do |config|
   # config.site_title_image = "logo.png"
 
   # == Default Namespace
+
+  config.comments = false
   #
   # Set the default namespace each administration resource
   # will be added to.
@@ -39,9 +41,9 @@ ActiveAdmin.setup do |config|
   # a namespace block. For example, to change the site title
   # within a namespace:
   #
-  #   config.namespace :admin do |admin|
-  #     admin.site_title = "Custom Admin Title"
-  #   end
+    config.namespace :admin do |admin|
+      admin.site_title = "Gshop Admin"
+    end
   #
   # This will ONLY change the title for the admin section. Other
   # namespaces will continue to use the main "site_title" configuration.
@@ -317,7 +319,7 @@ ActiveAdmin.setup do |config|
   # By default, the footer shows the current Active Admin version. You can
   # override the content of the footer here.
   #
-  # config.footer = 'my custom footer text'
+  config.footer = 'Mwape 2022'
 
   # == Sorting
   #
