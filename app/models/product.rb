@@ -5,7 +5,6 @@ class Product < ApplicationRecord
 
   monetize :price, as: :price_cents
 
-  # transform shopping cart products into an array of line items
   def to_builder
     Jbuilder.new do |product|
       product.price stripe_price_id
@@ -13,7 +12,6 @@ class Product < ApplicationRecord
     end
   end
 
-  # create stripe product and assign to this product
   after_create do
     product = Stripe::Product.create(name:)
     price = Stripe::Price.create(product:, unit_amount: self.price, currency:)
