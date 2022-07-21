@@ -171,6 +171,15 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.16.2)
+    monetize (1.12.0)
+      money (~> 6.12)
+    money (6.16.0)
+      i18n (>= 0.6.4, <= 2)
+    money-rails (1.15.0)
+      activesupport (>= 3.0)
+      monetize (~> 1.9)
+      money (~> 6.13)
+      railties (>= 3.0)
     msgpack (1.5.3)
     net-imap (0.2.3)
       digest
@@ -266,6 +275,7 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.1.0)
       railties (>= 6.0.0)
+    stripe (6.5.0)
     strscan (3.0.3)
     tailwindcss-rails (2.0.10-x86_64-darwin)
       railties (>= 6.0.0)
@@ -310,6 +320,7 @@ DEPENDENCIES
   draper
   importmap-rails
   jbuilder
+  money-rails
   pg (~> 1.1)
   puma (~> 5.0)
   pundit
@@ -318,6 +329,7 @@ DEPENDENCIES
   selenium-webdriver
   sprockets-rails
   stimulus-rails
+  stripe
   tailwindcss-rails
   turbo-rails
   tzinfo-data
