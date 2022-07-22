@@ -1,4 +1,7 @@
 class Product < ApplicationRecord
+  has_one_attached :mage
+  has_many_attached :thumbnails
+  
   def to_s
     name
   end
