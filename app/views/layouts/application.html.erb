@@ -19,7 +19,21 @@
           <ul class="hidden md:flex items-center pr-10 text-base font-semibold cursor-pointer">
             <%= link_to "Home", products_path, class: "hover:bg-gray-200 py-4 px-6" %>
             <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "hover:bg-gray-200 py-4 px-6" %>
+            <div class="py-4 px-6 relative z-0">
+              <span class="">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+              </span>
+              <span class="pl-0 absolute inset-0 z-10 bg-red-600 text-white text-center rounded-2xl w-6 h-6"><%= @cart.count%></span>
+            </div>
           </ul>
+
+          <button class="block md:hidden py-3 px-4 mx-4 rounded focus:outline-none hover:bg-gray-200">
+            <div class="w-5 h-1 bg-gray-600 mb-1"></div>
+            <div class="w-5 h-1 bg-gray-600 mb-1"></div>
+            <div class="w-5 h-1 bg-gray-600 mb-1"></div>
+          </button>
       </div>
     </nav>
       <p class="notice"><%= notice %></p>
