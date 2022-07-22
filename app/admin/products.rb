@@ -15,4 +15,19 @@ ActiveAdmin.register Product do
     end
     f.actions
   end
+
+  show do
+    attributes_table do
+      row :sku
+      row :name
+      row :price
+      row :weight
+      row :description
+      row :category
+      row :stock
+      # row :image do |product|
+      #   image_tag url_for(product.image)
+      # end
+    end
+  end
 end

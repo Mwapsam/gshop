@@ -1,40 +1,43 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Currency</th>
-      <th>Price</th>
-      <th>Stripe Product Id</th>
-      <th>Stripe Price Id</th>
-      <th>Stripe Currency</th>
-      <th>Stripe Price</th>
-      <th>Shopping cart</th>
-      <th>Sales count</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+<section class="h-screen bg-gray-100 flex items-center justify-center gap-10 p-10">
+  <% @products.each do |product| %>
+    <div class="card">
+      <%= image_tag(product.image, class: "w-full h-full max-h-40 object-cover") %>
+      <div class="p-5 flex flex-col gap-3">
+          <div class="flex items-center gap-2">
+            <span class="badge"> stock ready </span>
+            <span class="badge">official store</span>
+          </div>
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.currency %></td>
-        <td><%= product.price_cents %></td>
-        <td><%= product.stripe_product_id %></td>
-        <td><%= product.stripe_price_id %></td>
-        <td><%= Stripe::Price.retrieve(product.stripe_price_id)&.currency %></td>
-        <td><%= Stripe::Price.retrieve(product.stripe_price_id)&.unit_amount/100 %></td>
-        <td>
-          <% if @cart.include?(product) %>
-            <%= button_to "Remove from cart", remove_from_cart_path(product), method: :delete %>
-          <% else %>
-            <%= button_to "Add to cart", add_to_cart_path(product) %>
-          <% end %>
-        </td>
-        <td><%= product.sales_count %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+          <h2 class="product-title" >
+            <%= product.name %>
+          </h2>
+
+          <div>
+            <span class="text-xl font-bold">
+              <p>$<%= product.price %></p>
+            </span>
+          </div>
+
+          <div class="mt-5 flex gap-2">
+            <% if @cart.include?(product) %> 
+              <%= button_to "Remove", remove_from_cart_path(product), method: :delete, class: "button-primary bg-red-500 over:bg-red-600/90" %>
+            <% else %>
+              <%= button_to "Add to cart", add_to_cart_path(product), class: "button-primary" %>
+            <% end %>
+            <button class="button-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 opacity-50" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <button class="button-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            </button>
+          </div>
+      </div>
+    </div>
+  <% end %>
+</section>
+    

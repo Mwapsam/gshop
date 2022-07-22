@@ -12,10 +12,18 @@
   </head>
 
   <body>
-    <main class="container mx-auto flex">
+    <nav class="fixed top-0 left-0 bg-white w-full shadow">
+      <div class="container m-auto flex justify-between items-center text-gray-700">
+        <h1 class="pl-8 py-4 text-xl font-bold ">Gshop</h1>
+        <div class="flex items-center">
+          <ul class="hidden md:flex items-center pr-10 text-base font-semibold cursor-pointer">
+            <%= link_to "Home", products_path, class: "hover:bg-gray-200 py-4 px-6" %>
+            <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "hover:bg-gray-200 py-4 px-6" %>
+          </ul>
+      </div>
+    </nav>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= yield %>
-    </main>
   </body>
 </html>

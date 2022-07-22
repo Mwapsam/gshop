@@ -1,13 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/*
+@layer base {
+  font-family: 'Readex Pro', sans-serif;
+}
 
 @layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+  .card {
+    @apply
+      bg-white text-gray-700
+      w-72 max-h-[27rem]
+      shadow-lg rounded-md 
+      overflow-hidden
+  }
+  .badge {
+    @apply
+      px-3 py-1 rounded-full text-xs bg-gray-100
+
+  }
+  .product-title {
+    @apply
+      font-semibold text-2xl
+      overflow-ellipsis overflow-hidden whitespace-nowrap
+  }
+  .button-primary {
+    @apply
+      bg-yellow-500/80 hover:bg-yellow-600/90 focus:bg-yellow-600/90
+      px-6 py-2 rounded-md text-sm font-medium text-white
+      transition duration-150 ease-in-out
+      tracking-wider
+  }
+  .button-icon {
+    @apply
+       flex-grow
+       flex justify-center items-center
+       bg-gray-300/60 hover:bg-gray-300/40 focus:bg-gray-300/40
+       transition duration-150 ease-in-out
+       rounded-md
+
   }
 }
 
-*/
+
+
+
