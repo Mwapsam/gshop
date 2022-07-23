@@ -42,6 +42,17 @@
        rounded-md
 
   }
+  .cart {
+    @apply
+      bg-gray-900 text-gray-700
+      w-96 h-[27rem]
+      shadow-lg rounded-md 
+      overflow-hidden
+      absolute bg-opacity-90
+      flex-grow flex-col
+      flex justify-center items-center
+      p-6
+  }
 }
 
 
