@@ -9,49 +9,63 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
   <body>
-    <nav class="fixed top-0 left-0 bg-white w-full shadow">
-      <div class="container m-auto flex justify-between items-center text-gray-700">
-        <h1 class="pl-8 py-4 text-xl font-bold ">Gshop</h1>
-        <div class="flex items-center">
-          <ul class="hidden md:flex items-center pr-10 text-base font-semibold cursor-pointer">
-            <%= link_to "Home", products_path, class: "hover:bg-gray-200 py-4 px-6" %>
-            <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "hover:bg-gray-200 py-4 px-6" %>
-            <div class="py-4 px-6 relative z-0">
-              <span id="btn">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-              </span>
-              <span class="pl-0 absolute inset-0 z-10 bg-red-600 text-white text-center rounded-2xl w-6 h-6"><%= @cart.count%></span>
-            </div>
-          </ul>
+    <div data-controller="modal">
+      <template data-modal-target="template">
+        <nav class="fixed top-0 left-0 bg-white w-full shadow">
+          <div class="container m-auto flex justify-between items-center text-gray-700">
+            <h1 class="pl-8 py-4 text-xl font-bold ">Gshop</h1>
+            <div class="flex items-center">
+              <ul class="hidden md:flex items-center pr-10 text-base font-semibold cursor-pointer">
+                <%= link_to "Home", products_path, class: "hover:bg-gray-200 py-4 px-6" %>
+                <%= button_to "Logout", destroy_user_session_path, method: :delete, class: "hover:bg-gray-200 py-4 px-6" %>
+                <div class="py-4 px-6 relative z-0">
+                  <button data-action="modal#show">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                  </button>
+                  <span class="pl-0 absolute inset-0 z-10 bg-red-600 text-white text-center rounded-2xl w-6 h-6"><%= @cart.count%></span>
+                </div>
+              </ul>
 
-          <button class="block md:hidden py-3 px-4 mx-4 rounded focus:outline-none hover:bg-gray-200">
-            <div class="w-5 h-1 bg-gray-600 mb-1"></div>
-            <div class="w-5 h-1 bg-gray-600 mb-1"></div>
-            <div class="w-5 h-1 bg-gray-600 mb-1"></div>
-          </button>
-      </div>
-    </nav>
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <div class="cart hidden" style="margin: 63px 67%" id="cart">
-        <h1 class="text-white mb-6">Shopping cart</h1>
-        <%= console %>
-          <% @cart.each do |product| %>
-              <div class= "w-full flex justify-between items-center">
-                <%= image_tag product.image, class: "h-14 w-14 m-1 rounded" %>
-                <div class="text-white"><%= product.name %></div>
-                <div class="text-white">$<%= product.price%></div>
-                <%= button_to "X", remove_from_cart_path(product), method: :delete, class: "text-white" %>
-              </div>
-          <% end %>
-          <%= button_to "Buy now!", checkout_create_path, remote: true, data: { disable_with: "validating..."}, class: "button-primary bg-red-500 over:bg-red-600/90 mt-6"%>
-          <hr>
-      </div>
-      <%= yield %>
+              <button class="block md:hidden py-3 px-4 mx-4 rounded focus:outline-none hover:bg-gray-200">
+                <div class="w-5 h-1 bg-gray-600 mb-1"></div>
+                <div class="w-5 h-1 bg-gray-600 mb-1"></div>
+                <div class="w-5 h-1 bg-gray-600 mb-1"></div>
+              </button>
+          </div>
+        </nav>
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+          <div class="cart hidden" style="margin: 63px 67%" data-modal-target="modal">
+            <a href="#" class="text-white" style="padding-left: 300px" data-action="modal#hide">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </a>
+            <div class="flex justify-between align-top gap-9 m-6">
+                <h1 class="text-white mb-6">Shopping cart</h1>
+            </div>
+              <% @cart.each do |product| %>
+                  <div class= "w-full flex justify-between items-center">
+                    <%= image_tag product.image, class: "h-14 w-14 m-1 rounded" %>
+                    <div class="text-white"><%= product.name %></div>
+                    <div class="text-white">$<%= product.price%></div>
+                    <%= button_to "", remove_from_cart_path(product), method: :delete, class: "text-white fa fa-trash" %>
+                  </div>
+              <% end %>
+              <% if @cart.present? %>
+                  <div class="text-white mt-4" style="padding-left: 200px">Total price $<%= @total_price %></div>
+                  <%= button_to "Buy now!", checkout_create_path, remote: true, data: { disable_with: "validating..."}, class: "button-primary bg-red-500 over:bg-red-600/90 mt-6"%>
+              <% end %>
+              <hr>
+          </div>
+          <%= yield %>
+      </template>
+    </div>
   </body>
 </html>

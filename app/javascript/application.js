@@ -3,13 +3,13 @@ import "@hotwired/turbo-rails"
 import "controllers"
 
 
-    const btn = document.getElementById("btn");
-    const cart = document.getElementById("cart");
+    // const btn = document.getElementById("btn");
+    // const cart = document.getElementById("cart");
 
-    btn.addEventListener("mouseenter", () => {
-        cart.classList.remove("hidden");
-        console.log("mouseenter");
-    })
-    btn.addEventListener("click", () => {
-        cart.classList.add("hidden");
-    })
+    // btn.addEventListener("mouseenter", () => {
+    //     cart.classList.remove("hidden");
+    // })
+
+    // btn.addEventListener("click", () => {
+    //     cart.classList.add("hidden");
+    // })
