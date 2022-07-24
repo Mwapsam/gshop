@@ -91,3 +91,5 @@ gem 'money-rails'
 gem 'stripe'
 
 gem 'mini_magick'
+
+gem 'rack-cors'

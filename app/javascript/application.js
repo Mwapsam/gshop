@@ -3,13 +3,12 @@ import "@hotwired/turbo-rails"
 import "controllers"
 
 
-    // const btn = document.getElementById("btn");
-    // const cart = document.getElementById("cart");
-
-    // btn.addEventListener("mouseenter", () => {
-    //     cart.classList.remove("hidden");
-    // })
-
-    // btn.addEventListener("click", () => {
-    //     cart.classList.add("hidden");
-    // })
+let stripeIFrameQuery = 'iframe[src^="https://js.stripe.com"]';
+console.log('turbo');
+document.addEventListener('turbo:before-render', function (event) {
+  const stripeIFrame = document.querySelector(stripeIFrameQuery);
+  const newStripeIFrame = event.detail.newBody.querySelector(stripeIFrameQuery);
+  if (stripeIFrame && !newStripeIFrame){
+    event.detail.newBody.appendChild(stripeIFrame)
+  }
+});
