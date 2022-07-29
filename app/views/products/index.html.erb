@@ -1,6 +1,11 @@
 <section class="w-ful bg-gray-100 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-8 p-20">
   <% @products.each do |product| %>
-    <div class="card">
+    <% cache product do %>
+    <div class="card"
+    data-controller="hovercard"
+    data-hovercard-url-value="<%= hovercard_product_path(product) %>"
+    data-action="mouseenter->hovercard#show mouseleave->hovercard#hide"
+    >
       <%= image_tag(product.image, class: "w-full h-full max-h-40 object-cover") %>
       <div class="p-5 flex flex-col gap-3">
           <div class="flex items-center gap-2">
@@ -14,7 +19,7 @@
 
           <div>
             <span class="text-xl font-bold">
-              <p><%= product.price %></p>
+              <p><%= number_to_currency(product.price_cents) %></p>
             </span>
           </div>
 
@@ -38,6 +43,7 @@
           </div>
       </div>
     </div>
+    <% end %>
   <% end %>
 </section>
     
