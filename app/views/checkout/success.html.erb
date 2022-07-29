@@ -1,0 +1,39 @@
+<section class="w-ful bg-gray-100 grid items-center gap-8 p-20">
+    <table class="table-auto">
+     Checkout status: <%= @session_with_expand.payment_status %>
+        <thead>
+            <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Currency</th>
+            <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><% @session_with_expand.line_items.data.each do |line_item| %>
+                <% @product = Product.find_by(stripe_product_id: line_item.price.product) %>
+                <%= line_item %>
+                <br>
+                <%= @product.name %>
+                <% end %>
+            </tr>
+            <tr>
+                <td><%= @session_with_expand.amount_total/100.to_f %></td>
+            </tr>
+            <tr>
+                <td><%= @session_with_expand.currency %></td>
+            </tr>
+            <tr>
+            <td><%= @session_with_expand.currency %></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<h1>Success</h1>
+    <%= console %>
+    
+    <br>
+    Amount paid: 
+    
+    
