@@ -1,3 +1,12 @@
+[data-tooltip-arrow]::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    left: 1rem;
+    border-width: 2rem;
+    border-color: white transparent transparent transparent;
+  }
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -13,3 +22,4 @@
  *= require_tree .
  *= require_self
  */
+  
