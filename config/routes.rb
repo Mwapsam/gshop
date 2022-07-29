@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   resources :categories
   resources :product_options
   resources :options
-  resources :products
+  resources :products, only: [:index, :show] do
+    member do
+      get :hovercard
+    end
+  end
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
