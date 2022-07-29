@@ -45,6 +45,12 @@ class ProductsController < ApplicationController
     redirect_to products_url, notice: 'Product was successfully destroyed.'
   end
 
+  def hovercard
+    @product = Product.find(params[:id])
+
+    render layout: false
+  end
+
   private
 
   def set_product
