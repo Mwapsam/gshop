@@ -1,6 +1,6 @@
 ActiveAdmin.register Product do
   permit_params do
-    permitted = [:sku, :name, :price, :weight, :description, :category, :stock, :image, :thumbnails]
+    permitted = [:sku, :name, :price, :weight, :description, :stock, :image, :thumbnails, :category_id]
     permitted << :other if params[:action] == 'create' && current_admin_user
     permitted
   end
@@ -20,14 +20,27 @@ ActiveAdmin.register Product do
     attributes_table do
       row :sku
       row :name
-      row :price
+      row :price do |product|
+        number_to_currency product.price_cents
+      end
       row :weight
       row :description
-      row :category
       row :stock
       # row :image do |product|
       #   image_tag url_for(product.image)
       # end
     end
+  end
+
+  index do
+    column :sku
+    column :name
+    column :price do |product|
+      number_to_currency product.price_cents
+    end
+    column :weight
+    column :description
+    column :stock
+    column :category
   end
 end
