@@ -4,7 +4,6 @@ import "controllers"
 
 
 let stripeIFrameQuery = 'iframe[src^="https://js.stripe.com"]';
-console.log('turbo');
 document.addEventListener('turbo:before-render', function (event) {
   const stripeIFrame = document.querySelector(stripeIFrameQuery);
   const newStripeIFrame = event.detail.newBody.querySelector(stripeIFrameQuery);
