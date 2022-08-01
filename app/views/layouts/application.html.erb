@@ -58,6 +58,12 @@
                     <%= image_tag product.image, class: "h-14 w-14 m-1 rounded" %>
                     <div class="text-white"><%= product.name %></div>
                     <div class="text-white"><%= product.price%></div>
+                    <%= form_with model: @order_detail, url: order_details_path do |f| %>
+                        <%= f.hidden_field :product_id, value: product.id %>
+                        <%= f.hidden_field :order_id, value: 1 %>
+                        <%= f.select(:quantity, options_for_select([["1", 1], ["2", 2], ["3", 3], ["4", 4]], 1), {}, onchange: "javascript:this.form.commit.click();", style: "border-radius: 12px") %>
+                        <%= f.submit "Quantity", class: "hidden" %>
+                    <% end %>
                     <%= button_to "", remove_from_cart_path(product), method: :delete, class: "text-white fa fa-trash" %>
                     <hr class="text-white" />
                   </div>
@@ -68,8 +74,8 @@
               <% end %>
               <hr>
           </div>
-          <%= yield %>
       </template>
+       <%= yield %>
     </div>
   </body>
 </html>
