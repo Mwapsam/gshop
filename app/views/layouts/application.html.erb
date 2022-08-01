@@ -61,7 +61,8 @@
                     <%= form_with model: @order_detail, url: order_details_path do |f| %>
                         <%= f.hidden_field :product_id, value: product.id %>
                         <%= f.hidden_field :order_id, value: 1 %>
-                        <%= f.select(:quantity, options_for_select([["1", 1], ["2", 2], ["3", 3], ["4", 4]], 1), {}, onchange: "javascript:this.form.commit.click();", style: "border-radius: 12px") %>
+                        <%= f.label :quantity, "QTY", class: "text-white" %>
+                        <%= f.select(:quantity, options_for_select([["1", 1], ["2", 2], ["3", 3], ["4", 4]], 1), {}, onchange: "javascript:this.form.commit.click();", style: "border-radius: 12px; background: black; color: white; border: none") %>
                         <%= f.submit "Quantity", class: "hidden" %>
                     <% end %>
                     <%= button_to "", remove_from_cart_path(product), method: :delete, class: "text-white fa fa-trash" %>
