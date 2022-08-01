@@ -1,13 +1,12 @@
 <section class="bg-gray-100 p-20 flex items-center justify-center gap-8">
-  <% @categories.each do |cat| %>
-  <div class="mt-6 space-y-12 lg:space-y-0 lg:grid lg:grid-cols-3 lg:gap-x-6">
-    <div class="group relative">
-      <div class="card-content bg-indigo-600 ">
-        <div class="relative w-full h-80 bg-white rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-          <%= image_tag cat.image, class: "w-full h-full object-center object-cover" %>
+    <div class="w-full min-h-screen bg-blue-50 p-6">
+        <div class="flex flex-wrap justify-center">
+          <% @categories.each do |category| %>
+            <div class="flex flex-col bg-white rounded-lg shadow-md w-full m-6 overflow-hidden sm:w-52">
+                <%= image_tag category.image, class: "h-20 m-6 max-h-40 object-cover", alt: category.name %>
+                <%= link_to category.name, category_path(category.id), class: "text-center p-5" %>
+            </div>
+          <% end %>
         </div>
-      </div>
     </div>
-  </div>
-  <% end %>
 </section>
