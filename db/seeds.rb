@@ -6,3 +6,5 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+Order.create(ammount: 1000, shipping_address: '123 Main St', order_address: '123 Main St', status: 'pending', user_id: 1)
