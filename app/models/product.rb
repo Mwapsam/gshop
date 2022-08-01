@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :category
+  has_many :order_details 
   
   has_one_attached :image
   has_many_attached :thumbnails
@@ -13,7 +14,7 @@ class Product < ApplicationRecord
   def to_builder
     Jbuilder.new do |product|
       product.price stripe_price_id
-      product.quantity 1
+      product.quantity update_quantity
     end
   end
 
@@ -29,5 +30,9 @@ class Product < ApplicationRecord
   def create_and_assign_new_stripe_price
     price = Stripe::Price.create(product: stripe_product_id, unit_amount: self.price, currency:)
     update(stripe_price_id: price.id)
+  end
+
+  def update_quantity
+    order_details.sum(:quantity)
   end
 end
