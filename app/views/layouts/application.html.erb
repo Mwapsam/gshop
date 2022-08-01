@@ -50,7 +50,12 @@
                 </svg>
             </a>
             <div class="flex justify-between align-top gap-9 m-6">
-                <h1 class="text-white mb-6 font-bold">Shopping cart</h1>
+                <% if @cart.present? %>
+                  <h1 class="text-white mb-6 font-bold">Shopping cart</h1>
+                <% end %>
+                <% if @cart.empty? %>
+                  <p class="text-white font-bold">Your cart is empty</p>
+                <% end %>
             </div>
               <% @cart.each do |product| %>
                   <hr class="text-white" />
@@ -69,6 +74,7 @@
                     <hr class="text-white" />
                   </div>
               <% end %>
+              <hr class="text-white" />
               <% if @cart.present? %>
                   <div class="text-white mt-4" style="padding-left: 200px">Total price <%= @total_price %></div>
                   <%= button_to "Buy now!", checkout_create_path, remote: true, data: { turbo: false }, class: "button-primary bg-red-500 over:bg-red-600/90 mt-6"%>

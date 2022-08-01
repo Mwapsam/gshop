@@ -84,3 +84,11 @@ production:
   database: gshop_production
   username: gshop
   password: <%= ENV["GSHOP_DATABASE_PASSWORD"] %>
+
+
+s3:
+  service: S3
+  access_key_id: <%= ENV['AWS_ACCESS_KEY'] %>
+  secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+  region: <%= ENV['AWS_REGION'] %>
+  bucket: <%= ENV['AWS_BUCKET'] %>

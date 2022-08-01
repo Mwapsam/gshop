@@ -93,3 +93,6 @@ gem 'stripe'
 gem 'mini_magick'
 
 gem 'rack-cors'
+
+gem 'aws-sdk-s3'
+gem 'dotenv-rails'

@@ -10,6 +10,7 @@ ActiveAdmin.register_page 'Dashboard' do
           table_for Product.order('created_at desc').limit(5) do
             column :name
             column :sku
+            column :sales_count
             column :price do |product|
               number_to_currency product.price_cents
             end
@@ -18,9 +19,14 @@ ActiveAdmin.register_page 'Dashboard' do
         end
       end
       column do
-        panel "Categories" do
-          table_for Category.order('created_at desc').limit(5) do
-            columns :name, :description
+        panel "Orders" do
+          table_for Order.order('created_at desc').limit(5) do
+            column :ammount 
+            column :shipping_address
+            column :order_address
+            column :order_mail
+            column :status
+            column :user_id
           end
         end
       end
