@@ -1,39 +1,31 @@
-<section class="w-ful bg-gray-100 grid items-center gap-8 p-20">
-    <table class="table-auto">
-     Checkout status: <%= @session_with_expand.payment_status %>
-        <thead>
-            <tr>
-            <th>Item</th>
-            <th>Price</th>
-            <th>Currency</th>
-            <th>Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><% @session_with_expand.line_items.data.each do |line_item| %>
+<section class="bg-gray-100 p-20">
+    <h1 class="inline-block text-center text-xl font-bold">Order Summury</h1>
+        <div class="grid gap-8">
+                <% @session_with_expand.line_items.data.each do |line_item| %>
                 <% @product = Product.find_by(stripe_product_id: line_item.price.product) %>
-                <%= line_item %>
-                <br>
-                <%= @product.name %>
+                    <div class="w-full flex items-center bg-white text-gray-700 gap-9">
+                        <div>
+                            <%= image_tag(@product.image, class: "max-h-40 object-cover", style: "width: 14rem") %>
+                        </div>
+                        <div class="flex flex-col w-full">
+                            <%= link_to @product.name, @product, class: "text-xl font-bold" %>
+                            <div class="flex justify-between">
+                                <div class="flex gap-9">
+                                    <p class="text-end">Quantity <%= line_item.quantity %></p>  
+                                    <p>Discount <%= number_to_currency(line_item.amount_discount) %></p>
+                                </div>
+                            <p class="text-lg font-bold" style="padding-right: 20px"><%= number_to_currency(line_item.amount_subtotal/100.to_f) %></p>
+                            </div>
+                        </div>
+                    </div>
                 <% end %>
-            </tr>
-            <tr>
-                <td><%= @session_with_expand.amount_total/100.to_f %></td>
-            </tr>
-            <tr>
-                <td><%= @session_with_expand.currency %></td>
-            </tr>
-            <tr>
-            <td><%= @session_with_expand.currency %></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
-<h1>Success</h1>
-    <%= console %>
-    
-    <br>
-    Amount paid: 
+            <div class="flex flex-col gap-2">
+                <p>Checkout status: <%= @session_with_expand.payment_status %></p>
+                <p>Total Amount <%= number_to_currency(@session_with_expand.amount_total/100.to_f) %></p>
+            </div>
+            <%= current_user %>
+            <%= current_user.stripe_customer_id %>
+        </div>
+</div> 
     
     
