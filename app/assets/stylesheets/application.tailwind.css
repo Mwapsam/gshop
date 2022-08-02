@@ -53,4 +53,21 @@
       flex justify-center items-center
       p-4 fixed top-0 left-0
   }
+  .gradient{
+    background: linear-gradient(90deg, #f9d1cf 50%, #7ad592 50%);
+  }
+  .shadow-one {
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 20px 15px, 
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, 
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, 
+    rgba(0, 0, 0, 0.09) 0px 26px 18px, 
+    rgba(0, 0, 0, 0.09) 0px 60px 25px
+  }
+  .shadow-two {
+    box-shadow: 6px 4px 4px -8px #000;
+  }
+  .drop-shadow-one {
+    --tw-drop-shadow: drop-shadow(0 50px 50px rgb(0 0 0 / 0.03)) drop-shadow(0 58px 15px rgb(0 0 0 / 0.1));
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+  }
 }
