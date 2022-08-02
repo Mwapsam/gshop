@@ -32,7 +32,7 @@
       bg-yellow-500/80 hover:bg-yellow-600/90 focus:bg-yellow-600/90
       px-6 py-2 rounded-md text-sm font-medium text-white
       transition duration-150 ease-in-out
-      tracking-wider
+      tracking-wider w-fit
   }
   .button-icon {
     @apply
