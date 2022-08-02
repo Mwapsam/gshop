@@ -42,5 +42,7 @@ ActiveAdmin.register Product do
     column :description
     column :stock
     column :category
+
+    actions
   end
 end
