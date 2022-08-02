@@ -1,14 +1,14 @@
 <%= render "categories/category" %>
-<section class="w-ful bg-gray-100 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-8 px-20">
+<section class="w-ful bg-gray-100 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-8 px-20 pb-20">
   <% @products.each do |product| %>
     <% cache product do %>
     <div data-controller="hovercard"
-      data-hovercard-url-value="<%= hovercard_product_path(product) %>"
-      data-action="mouseenter->hovercard#show mouseleave->hovercard#hide"
+    data-hovercard-url-value="<%= hovercard_product_path(product) %>"
+    data-action="mouseenter->hovercard#show mouseleave->hovercard#hide"
     >
       <div class="card" >
           <%= image_tag(product.image, class: "w-full h-full max-h-40 object-cover") %>
-          <div class="flex justify-between items-center gap-3" style="padding: 8px">
+          <div class="flex justify-between items-center gap-3 p-3" >
               <h2 class="text-sm" >
                 <%= product.name %>
               </h2>
