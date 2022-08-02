@@ -17,7 +17,7 @@
             &middot;
           </span>
         </span>
-          <div class="mt-5 flex flex-col gap-3">
+          <div class="mt-5 flex flex-col gap-3 p-2">
             <% if @cart.include?(@product) %> 
               <%= button_to "Remove", remove_from_cart_path(@product), method: :delete, class: "button-primary bg-red-500 over:bg-red-600/90" %>
             <% else %>

@@ -1,30 +1,21 @@
 <%= render "categories/category" %>
-<section class="w-ful bg-gray-100 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-8 p-20">
+<section class="w-ful bg-gray-100 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-8 px-20">
   <% @products.each do |product| %>
     <% cache product do %>
-    <div
-    data-controller="hovercard"
-    data-hovercard-url-value="<%= hovercard_product_path(product) %>"
-    data-action="mouseenter->hovercard#show mouseleave->hovercard#hide"
+    <div data-controller="hovercard"
+      data-hovercard-url-value="<%= hovercard_product_path(product) %>"
+      data-action="mouseenter->hovercard#show mouseleave->hovercard#hide"
     >
       <div class="card" >
-        <%= image_tag(product.image, class: "w-full h-full max-h-40 object-cover") %>
-        <div class="p-5 flex flex-col gap-3">
-            <div class="flex items-center gap-2">
-              <span class="badge"> stock ready </span>
-              <span class="badge">official store</span>
-            </div>
-
-            <h2 class="product-title" >
-              <%= product.name %>
-            </h2>
-
-            <div>
-              <span class="text-xl font-bold">
+          <%= image_tag(product.image, class: "w-full h-full max-h-40 object-cover") %>
+          <div class="flex justify-between items-center gap-3" style="padding: 8px">
+              <h2 class="text-sm" >
+                <%= product.name %>
+              </h2>
+              <span class="text-sm">
                 <p><%= number_to_currency(product.price_cents) %></p>
               </span>
-            </div>
-        </div>
+          </div>
       </div>
      </div>
     <% end %>
