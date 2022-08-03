@@ -3,12 +3,14 @@
         <div class="flex overflow-x-scroll justify-center" data-slider-target="scrollContainer">
           <% @categories.each do |category| %>
               <div class="flex flex-col bg-white rounded-lg shadow-md w-full m-6 overflow-hidden sm:w-52">
-                  <%= image_tag category.image, class: "h-20 m-6 max-h-40 object-cover", alt: category.name, id: category.id, data: { target: "slider.image" } %>
+                  <%= image_tag category.image, class: "h-20 m-6 max-h-40 object-cover", alt: category.name, id: category.id, data: { target: "image", controller: "slider" } %>
                   <%= link_to category.name, category_path(category.id), class: "text-center p-5" %>
               </div>
-              <ul class="flex justify-center">
-                <li class="h-6 w-6 rounded-full mx-2 cursor-pointer bg-gray-500" data-slider-target="indicator" data-image-id=<%=category.id %> data-action="click->slider#scrollTo"></li>
-              </ul>
+              <div class="flex mx-auto my-8">
+                <ul class="flex justify-center">
+                  <li class="h-6 w-6 rounded-full mx-2 cursor-pointer bg-gray-500" data-slider-target="indicator" data-image-id=<%=category.id %> data-action="click->slider#scrollTo"></li>
+                </ul>
+              </div>
           <% end %>
         </div>
     </div>
