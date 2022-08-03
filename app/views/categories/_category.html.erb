@@ -1,9 +1,9 @@
-<section class="bg-gray-100 pt-20 px-20 flex items-center justify-center gap-8" data-controller="slider">
+<section class="bg-gray-100 pt-20 px-20 flex items-center justify-center gap-8">
     <div class="w-full bg-blue-50 p-6">
-        <div class="flex overflow-x-scroll justify-center" data-slider-target="scrollContainer">
+        <div class="flex overflow-x-scroll justify-center" data-controller="slider">
           <% @categories.each do |category| %>
-              <div class="flex flex-col bg-white rounded-lg shadow-md w-full m-6 overflow-hidden sm:w-52">
-                  <%= image_tag category.image, class: "h-20 m-6 max-h-40 object-cover", alt: category.name, id: category.id, data: { target: "image", controller: "slider" } %>
+              <div class="flex flex-col bg-white rounded-lg shadow-md w-full m-6 overflow-hidden sm:w-52 overflow-x-scroll hide-scroll-bar overscroll-x-contain gallery" data-slider-target="scrollContainer">
+                  <%= image_tag category.image, class: "h-20 m-6 max-h-40 object-cover gallery-item", alt: category.name, id: category.id, data: { target: "image" } %>
                   <%= link_to category.name, category_path(category.id), class: "text-center p-5" %>
               </div>
               <div class="flex mx-auto my-8">
