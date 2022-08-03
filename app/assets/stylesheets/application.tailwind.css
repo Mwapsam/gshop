@@ -15,6 +15,7 @@
       w-80 max-h-[27rem]
       shadow-lg rounded-md 
       overflow-hidden
+      pt-3
   }
   .badge {
     @apply
