@@ -1,5 +1,5 @@
 <%= render "categories/category" %>
-<h2 class="text-4xl text-center font-bold">New Arrivals</h2>
+<h2 class="text-4xl text-center font-bold p-5">New Arrivals</h2>
 <section class="w-ful bg-gray-100 grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 items-center gap-8 px-20 pb-20">
   <% @products.each do |product| %>
     <% cache product do %>
@@ -8,7 +8,7 @@
     data-action="mouseenter->hovercard#show mouseleave->hovercard#hide"
     >
       <div class="card" >
-          <%= image_tag(product.image, class: "w-full h-full max-h-[15rem] object-cover") %>
+          <%= image_tag(product.image, class: "w-full h-full max-h-40 object-cover") %>
           <div class="flex justify-between items-center gap-3 p-3" >
               <h2 class="text-sm" >
                 <%= product.name %>
