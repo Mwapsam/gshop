@@ -1,15 +1,10 @@
 <section class="bg-gray-100 pt-20 px-20 flex items-center justify-center gap-8">
     <div class="w-full bg-blue-50 p-6">
-        <div class="flex overflow-x-scroll justify-center" data-controller="slider">
+        <div class="flex overflow-x-scroll justify-center">
           <% @categories.each do |category| %>
-              <div class="flex flex-col bg-white rounded-lg shadow-md w-full m-6 overflow-hidden sm:w-52 overflow-x-scroll hide-scroll-bar overscroll-x-contain gallery" data-slider-target="scrollContainer">
-                  <%= image_tag category.image, class: "h-20 m-6 max-h-40 object-cover gallery-item", alt: category.name, id: category.id, data: { target: "image" } %>
+              <div class="flex flex-col bg-white rounded-lg shadow-md w-full m-6 overflow-hidden sm:w-52 overflow-x-scroll hide-scroll-bar overscroll-x-contain gallery" >
+                  <%= image_tag category.image, class: "h-20 m-6 max-h-40 object-cover gallery-item", alt: category.name %>
                   <%= link_to category.name, category_path(category.id), class: "text-center p-5" %>
-              </div>
-              <div class="flex mx-auto my-8">
-                <ul class="flex justify-center">
-                  <li class="h-6 w-6 rounded-full mx-2 cursor-pointer bg-gray-500" data-slider-target="indicator" data-image-id=<%=category.id %> data-action="click->slider#scrollTo"></li>
-                </ul>
               </div>
           <% end %>
         </div>
